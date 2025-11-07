@@ -1,11 +1,20 @@
 {
-  "name": "happy-opfs",
+  "name": "@themartiancompany/happy-opfs",
   "description": "A browser-compatible fs module inspired by the Deno fs and @std/fs APIs, based on OPFS implementation.",
   "homepage": "https://github.com/JiangJie/happy-opfs",
   "bugs": {
     "url": "https://github.com/JiangJie/happy-opfs/issues"
   },
-  "author": "jiang115jie@gmail.com",
+  "author": {
+    "name": "Pellegrino Prevete",
+    "email": "jiang115jie@gmail.com",
+    "url": "https://github.com/JiangJie"
+  },
+  "contributors": [ {
+    "name": "Pellegrino Prevete",
+    "email": "pellegrinoprevete@gmail.com",
+    "url": "https://github.com/tallero"
+  } ],
   "license": "GPL-3.0",
   "version": "1.8.7",
   "type": "module",
@@ -36,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JiangJie/happy-opfs.git"
+    "url": "git+https://github.com/themartiancompany/happy-opfs.git"
   },
   "keywords": [
     "fs",
