@@ -201,9 +201,8 @@ function run() {
     if ( fs.isFileHandleLike(
            handle) ) {
       let
-        _line,
-	_msg;
-      _msg = [
+        _line;
+      const _msg = [
         "Path:",
         `  ${path}`,
         "Kind:",
@@ -224,9 +223,8 @@ function run() {
     }
     else {
       let
-        _line,
-	_msg;
-      _msg = [
+        _line;
+      const _msg = [
         "Path:",
         `  ${path}`,
         "Kind:",

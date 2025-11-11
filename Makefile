@@ -20,6 +20,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 PREFIX ?= /usr/local
+_NAMESPACE=themartiancompany
 _PROJECT=happy-opfs
 DOC_DIR=$(DESTDIR)$(PREFIX)/share/doc/$(_PROJECT)
 USR_DIR=$(DESTDIR)$(PREFIX)
@@ -120,7 +121,7 @@ build-npm:
 	npm \
 	  pack; \
 	mv \
-	  "$(_PROJECT)-$${_version}.tgz" \
+	  "$(_NAMESPACE)-$(_PROJECT)-$${_version}.tgz" \
 	  ".."
 
 install-npm:

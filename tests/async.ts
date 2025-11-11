@@ -314,9 +314,8 @@ export async function testAsync() {
     if ( fs.isFileHandleLike(
            handleLike) ) {
       let
-        _line,
-        _msg;
-      _msg = [
+        _line;
+      const _msg = [
         "Path:",
         `  ${path}`,
         "Kind:",
