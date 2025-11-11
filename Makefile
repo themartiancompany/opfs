@@ -139,7 +139,7 @@ install-npm:
 	npm \
 	  install \
 	    "$${_npm_opts[@]}" \
-	    "$(_PROJECT)-$${_version}.tgz"; \
+	    "$(_NAMESPACE)-$(_PROJECT)-$${_version}.tgz"; \
 	$(_INSTALL_DIR) \
 	  "$(DESTDIR)$(PREFIX)/lib"; \
 	ln \
@@ -152,6 +152,9 @@ publish-npm:
 
 	cd \
 	  "build"; \
+	npm \
+	  install \
+	  --save-dev; \
 	npm \
 	  publish \
 	  --access \
