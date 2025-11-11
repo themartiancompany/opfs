@@ -205,15 +205,15 @@ function run() {
           "Path:",
           `  ${path}`,
           "Kind:",
-          `  ${handleLike.kind}`,
+          `  ${handle.kind}`,
           "Name:",
-          `  ${handleLike.name}`,
+          `  ${handle.name}`,
           "Type:",
-       	  `  ${handleLike.type}`,
+       	  `  ${handle.type}`,
           "Size:",
-          `  ${handleLike.size}`,
+          `  ${handle.size}`,
           "Last Modified:",
-          `  ${handleLike.lastModified}`
+          `  ${handle.lastModified}`
         ]
       for ( var _line of _msg ) {
         console.log(
@@ -226,9 +226,9 @@ function run() {
           "Path:",
           `  ${path}`,
           "Kind:",
-          `  ${handleLike.kind}`,
+          `  ${handle.kind}`,
           "Name:",
-          `  ${handleLike.name}`
+          `  ${handle.name}`
         ]
       for ( var _line of _msg ) {
         console.log(
