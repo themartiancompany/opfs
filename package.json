@@ -4,7 +4,7 @@
   "description":
     "A browser-compatible fs module inspired by the Deno fs and @std/fs APIs, based on OPFS implementation.",
   "version":
-    "1.8.9",
+    "1.8.10",
   "homepage":
     "https://github.com/JiangJie/happy-opfs",
   "license":
@@ -29,6 +29,22 @@
     "url":
       "https://github.com/tallero"
   } ],
+  "keywords": [
+    "fs",
+    "system",
+    "file",
+    "directory",
+    "opfs",
+    "origin",
+    "private",
+    "worker",
+    "sync",
+    "async",
+    "upload",
+    "download",
+    "zip",
+    "unzip"
+  ],
   "type":
     "module",
   "files": [
@@ -76,22 +92,6 @@
     "type": "git",
     "url": "git+https://github.com/themartiancompany/happy-opfs.git"
   },
-  "keywords": [
-    "fs",
-    "system",
-    "file",
-    "directory",
-    "opfs",
-    "origin",
-    "private",
-    "worker",
-    "sync",
-    "async",
-    "upload",
-    "download",
-    "zip",
-    "unzip"
-  ],
   "devDependencies": {
     "@eslint/js":
       "^9.32.0",
