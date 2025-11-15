@@ -3,6 +3,8 @@
 //    ----------------------------------------------------------------------
 //    Copyright © 2024, 2025
 //                Jiang Jie
+//                2025
+//                Pellegrino Prevete
 //
 //    All rights reserved
 //    ----------------------------------------------------------------------
@@ -35,14 +37,21 @@ import { isDirectoryHandle } from './utils.ts';
  * @param filePath - The path of the file to create.
  * @returns A promise that resolves to an `AsyncIOResult` indicating whether the file was successfully created.
  */
-export async function createFile(filePath: string): AsyncVoidIOResult {
-    assertAbsolutePath(filePath);
-
-    const fileHandleRes = await getFileHandle(filePath, {
-        create: true,
-    });
-
-    return fileHandleRes.and(RESULT_VOID);
+export async function
+  createFile(
+    filePath:
+      string):
+    AsyncVoidIOResult {
+    assertAbsolutePath(
+      filePath);
+    const
+      fileHandleRes =
+        await getFileHandle(
+          filePath,
+          { create:
+            true });
+    return fileHandleRes.and(
+      RESULT_VOID);
 }
 
 /**
@@ -51,14 +60,22 @@ export async function createFile(filePath: string): AsyncVoidIOResult {
  * @param dirPath - The path where the new directory will be created.
  * @returns A promise that resolves to an `AsyncIOResult` indicating whether the directory was successfully created.
  */
-export async function mkdir(dirPath: string): AsyncVoidIOResult {
-    assertAbsolutePath(dirPath);
-
-    const dirHandleRes = await getDirHandle(dirPath, {
-        create: true,
-    });
-
-    return dirHandleRes.and(RESULT_VOID);
+export async function
+  mkdir(
+    dirPath:
+      string):
+    AsyncVoidIOResult {
+    assertAbsolutePath(
+      dirPath);
+    const
+      dirHandleRes =
+        await getDirHandle(
+          dirPath,
+          { create:
+              true,
+          });
+    return dirHandleRes.and(
+      RESULT_VOID);
 }
 
 /**
@@ -68,29 +85,55 @@ export async function mkdir(dirPath: string): AsyncVoidIOResult {
  * @param options - Options of readdir.
  * @returns A promise that resolves to an `AsyncIOResult` containing an async iterable iterator over the entries of the directory.
  */
-export async function readDir(dirPath: string, options?: ReadDirOptions): AsyncIOResult<AsyncIterableIterator<ReadDirEntry>> {
-    assertAbsolutePath(dirPath);
-
-    const dirHandleRes = await getDirHandle(dirPath);
-
-    async function* read(dirHandle: FileSystemDirectoryHandle, subDirPath: string): AsyncIterableIterator<ReadDirEntry> {
-        const entries = dirHandle.entries();
-
-        for await (const [name, handle] of entries) {
-            // relative path from `dirPath`
-            const path = subDirPath === dirPath ? name : join(subDirPath, name);
-            yield {
-                path,
-                handle,
-            };
-
-            if (isDirectoryHandle(handle) && options?.recursive) {
-                yield* read(await dirHandle.getDirectoryHandle(name), path);
-            }
+export async function
+  readDir(
+    dirPath:
+      string,
+    options?:
+      ReadDirOptions):
+    AsyncIOResult<AsyncIterableIterator<ReadDirEntry>> {
+    assertAbsolutePath(
+      dirPath);
+    const
+      dirHandleRes =
+        await getDirHandle(
+          dirPath);
+    async function*
+      read(
+        dirHandle:
+          FileSystemDirectoryHandle,
+        subDirPath:
+          string):
+        AsyncIterableIterator<ReadDirEntry> {
+        const
+	  entries =
+            dirHandle.entries();
+        for await ( const [ name,
+                            handle ] of entries) {
+          // relative path from `dirPath`
+          const
+            path =
+              subDirPath === dirPath ? name : join(
+                                                subDirPath,
+                                                name);
+          yield {
+            path,
+            handle,
+          };
+          if ( isDirectoryHandle(
+                 handle) && options?.recursive ) {
+            yield* read(
+              await dirHandle.getDirectoryHandle(
+                name),
+                path);
+          }
         }
     }
-
-    return dirHandleRes.andThen(x => Ok(read(x, dirPath)));
+    return dirHandleRes.andThen(
+      x => Ok(
+             read(
+               x,
+               dirPath)));
 }
 
 /**
@@ -100,9 +143,14 @@ export async function readDir(dirPath: string, options?: ReadDirOptions): AsyncI
  * @param options - Read options specifying the 'blob' encoding.
  * @returns A promise that resolves to an `AsyncIOResult` containing the file content as a File.
  */
-export function readFile(filePath: string, options: ReadOptions & {
-    encoding: 'blob';
-}): AsyncIOResult<File>;
+export function
+  readFile(
+    filePath:
+      string,
+    options:
+      ReadOptions & { encoding:
+                        'blob'; }):
+    AsyncIOResult<File>;
 
 /**
  * Reads the content of a file at the specified path as a string.
@@ -111,9 +159,14 @@ export function readFile(filePath: string, options: ReadOptions & {
  * @param options - Read options specifying the 'utf8' encoding.
  * @returns A promise that resolves to an `AsyncIOResult` containing the file content as a string.
  */
-export function readFile(filePath: string, options: ReadOptions & {
-    encoding: 'utf8';
-}): AsyncIOResult<string>;
+export function
+  readFile(
+    filePath:
+      string,
+    options:
+      ReadOptions & { encoding:
+                        'utf8'; }):
+    AsyncIOResult<string>;
 
 /**
  * Reads the content of a file at the specified path as an ArrayBuffer by default.
@@ -122,9 +175,14 @@ export function readFile(filePath: string, options: ReadOptions & {
  * @param options - Read options specifying the 'binary' encoding.
  * @returns A promise that resolves to an `AsyncIOResult` containing the file content as an ArrayBuffer.
  */
-export function readFile(filePath: string, options?: ReadOptions & {
-    encoding: 'binary';
-}): AsyncIOResult<ArrayBuffer>;
+export function
+  readFile(
+    filePath:
+      string,
+    options?:
+      ReadOptions & { encoding:
+                        'binary'; }):
+    AsyncIOResult<ArrayBuffer>;
 
 /**
  * Reads the content of a file at the specified path with the specified options.
@@ -134,25 +192,40 @@ export function readFile(filePath: string, options?: ReadOptions & {
  * @param options - Optional read options.
  * @returns A promise that resolves to an `AsyncIOResult` containing the file content.
  */
-export async function readFile<T extends ReadFileContent>(filePath: string, options?: ReadOptions): AsyncIOResult<T> {
-    assertAbsolutePath(filePath);
-
-    const fileHandleRes = await getFileHandle(filePath);
-
-    return fileHandleRes.andThenAsync(async fileHandle => {
-        const file = await fileHandle.getFile();
-        switch (options?.encoding) {
-            case 'blob': {
-                return Ok(file as unknown as T);
-            }
-            case 'utf8': {
-                const text = await file.text();
-                return Ok(text as unknown as T);
-            }
-            default: {
-                const data = await file.arrayBuffer();
-                return Ok(data as unknown as T);
-            }
+export async function
+  readFile<T extends ReadFileContent>(
+    filePath:
+      string,
+    options?:
+      ReadOptions):
+    AsyncIOResult<T> {
+    assertAbsolutePath(
+      filePath);
+    const
+      fileHandleRes =
+        await getFileHandle(
+          filePath);
+    return fileHandleRes.andThenAsync(
+      async fileHandle => {
+        const
+          file =
+            await fileHandle.getFile();
+        switch ( options?.encoding ) {
+          case 'blob': {
+            return Ok(file as unknown as T);
+          }
+          case 'utf8': {
+            const
+              text =
+                await file.text();
+            return Ok(text as unknown as T);
+          }
+          default: {
+              const
+                data =
+                  await file.arrayBuffer();
+              return Ok(data as unknown as T);
+          }
         }
     });
 }
@@ -163,37 +236,59 @@ export async function readFile<T extends ReadFileContent>(filePath: string, opti
  * @param path - The path of the file or directory to remove.
  * @returns A promise that resolves to an `AsyncIOResult` indicating whether the file or directory was successfully removed.
  */
-export async function remove(path: string): AsyncVoidIOResult {
-    assertAbsolutePath(path);
-
-    const dirPath = dirname(path);
-    const childName = basename(path);
-
-    const dirHandleRes = await getDirHandle(dirPath);
-
-    return (await dirHandleRes.andThenAsync(async (dirHandle): AsyncVoidIOResult => {
-        try {
-            // root
-            if (isRootPath(dirPath) && isRootPath(childName)) {
-                // TODO ts not support yet
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                await (dirHandle as any).remove({
-                    recursive: true,
-                });
-            } else {
-                await dirHandle.removeEntry(childName, {
-                    recursive: true,
-                });
-            }
-        } catch (e) {
-            return Err(e as DOMException);
-        }
-
-        return RESULT_VOID;
-    })).orElse<Error>(err => {
-        // not found as success
-        return isNotFoundError(err) ? RESULT_VOID : Err(err);
-    });
+export async function
+  remove(
+    path:
+      string):
+    AsyncVoidIOResult {
+    assertAbsolutePath(
+      path);
+    const
+      dirPath =
+        dirname(
+          path);
+    const
+      childName =
+        basename(
+          path);
+    const
+      dirHandleRes =
+        await getDirHandle(
+          dirPath);
+    return ( await dirHandleRes.andThenAsync(
+               async (
+                 dirHandle):
+                 AsyncVoidIOResult => {
+                 try {
+                   // root
+                   if ( isRootPath(
+                          dirPath) &&
+                        isRootPath(
+                          childName) ) {
+                     // TODO ts not support yet
+                     // eslint-disable-next-line
+                     // @typescript-eslint/no-explicit-any
+                     await ( dirHandle as any ).remove(
+                       { recursive:
+                           true });
+                   } else {
+                       await dirHandle.removeEntry(
+                         childName,
+                           { recursive:
+                               true });
+                   }
+                 } catch (
+                     _error) {
+                     return Err(_error as DOMException);
+                 }
+                 return RESULT_VOID;
+               })).orElse<Error>(
+                 _error => {
+                   // not found as success
+                   return isNotFoundError(
+                          _error) ? RESULT_VOID : Err(
+                                                    _error);
+               });
 }
 
 /**
@@ -202,30 +297,48 @@ export async function remove(path: string): AsyncVoidIOResult {
  * @param path - The path of the file or directory to retrieve status for.
  * @returns A promise that resolves to an `AsyncIOResult` containing the `FileSystemHandle`.
  */
-export async function stat(path: string): AsyncIOResult<FileSystemHandle> {
-    assertAbsolutePath(path);
-
-    const dirPath = dirname(path);
-    const childName = basename(path);
-
-    const dirHandleRes = await getDirHandle(dirPath);
-    if (!childName) {
+export async function
+  stat(
+    path:
+      string):
+    AsyncIOResult<FileSystemHandle> {
+    assertAbsolutePath(
+      path);
+    const
+      dirPath =
+        dirname(
+          path);
+    const
+      childName =
+        basename(
+          path);
+    const
+      dirHandleRes =
+        await getDirHandle(
+          dirPath);
+    if ( !childName ) {
         // root
         return dirHandleRes;
     }
-
-    return dirHandleRes.andThenAsync(async dirHandle => {
+    return dirHandleRes.andThenAsync(
+      async dirHandle => {
         // currently only rely on traversal inspection
-        for await (const [name, handle] of dirHandle.entries()) {
-            if (name === childName) {
-                return Ok(handle);
-            }
+        for await ( const [ name,
+                            handle] of dirHandle.entries() ) {
+          if ( name === childName ) {
+            return Ok(
+              handle);
+          }
         }
-
-        const err = new Error(`${ NOT_FOUND_ERROR }: '${ childName }' does not exist. Full path is '${ path }'.`);
-        err.name = NOT_FOUND_ERROR;
-
-        return Err(err);
+        const
+          err =
+            new Error(
+              `${ NOT_FOUND_ERROR }: '${ childName }' ` +
+              `does not exist. Full path is '${ path }'.`);
+        err.name =
+          NOT_FOUND_ERROR;
+        return Err(
+          err);
     });
 }
 
@@ -237,34 +350,50 @@ export async function stat(path: string): AsyncIOResult<FileSystemHandle> {
  * @param options - Optional write options.
  * @returns A promise that resolves to an `AsyncIOResult` indicating whether the file was successfully written.
  */
-export async function writeFile(filePath: string, contents: WriteFileContent, options?: WriteOptions): AsyncVoidIOResult {
-    assertAbsolutePath(filePath);
-
+export async function
+  writeFile(
+    filePath:
+      string,
+    contents:
+      WriteFileContent,
+    options?:
+      WriteOptions):
+    AsyncVoidIOResult {
+    assertAbsolutePath(
+      filePath);
     // create as default
     const { append = false, create = true } = options ?? {};
-
-    const fileHandleRes = await getFileHandle(filePath, {
-        create,
-    });
-
-    return fileHandleRes.andThenAsync(async fileHandle => {
-        const writable = await fileHandle.createWritable({
-            keepExistingData: append,
-        });
-        const params: WriteParams = {
-            type: 'write',
-            data: contents,
-        };
-
+    const
+      fileHandleRes =
+        await getFileHandle(
+          filePath,
+          { create });
+    return fileHandleRes.andThenAsync(
+      async fileHandle => {
+        const
+          writable =
+            await fileHandle.createWritable(
+              { keepExistingData:
+                  append });
+        const
+          params:
+            WriteParams =
+              { type:
+                  'write',
+                data:
+                  contents,
+              };
         // append?
-        if (append) {
-            const { size } = await fileHandle.getFile();
-            params.position = size;
+        if ( append ) {
+          const
+            { size } =
+              await fileHandle.getFile();
+          params.position =
+            size;
         }
-
-        await writable.write(params);
+        await writable.write(
+          params);
         await writable.close();
-
         return RESULT_VOID;
     });
 }
