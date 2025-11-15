@@ -23,12 +23,26 @@
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-import { basename, dirname, join } from '@std/path/posix';
-import { Err, Ok, RESULT_VOID, type AsyncIOResult, type AsyncVoidIOResult } from 'happy-rusty';
+import { basename,
+         dirname,
+         join } from '@std/path/posix';
+import { Err,
+         Ok,
+         RESULT_VOID,
+         type AsyncIOResult,
+         type AsyncVoidIOResult } from 'happy-rusty';
 import { assertAbsolutePath } from './assertions.ts';
 import { NOT_FOUND_ERROR } from './constants.ts';
-import type { ReadDirEntry, ReadDirOptions, ReadFileContent, ReadOptions, WriteFileContent, WriteOptions } from './defines.ts';
-import { getDirHandle, getFileHandle, isNotFoundError, isRootPath } from './helpers.ts';
+import type { ReadDirEntry,
+              ReadDirOptions,
+              ReadFileContent,
+              ReadOptions,
+              WriteFileContent,
+              WriteOptions } from './defines.ts';
+import { getDirHandle,
+         getFileHandle,
+         isNotFoundError,
+         isRootPath } from './helpers.ts';
 import { isDirectoryHandle } from './utils.ts';
 
 /**
