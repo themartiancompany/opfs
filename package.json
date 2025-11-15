@@ -4,7 +4,7 @@
   "description":
     "A browser-compatible fs module inspired by the Deno fs and @std/fs APIs, based on OPFS implementation.",
   "version":
-    "1.8.10",
+    "1.8.11",
   "homepage":
     "https://github.com/JiangJie/happy-opfs",
   "license":
