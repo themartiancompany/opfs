@@ -22,7 +22,7 @@
 [comment]: <> (License along with this program.)
 [comment]: <> (If not, see <https://www.gnu.org/licenses/>.)
 
-# Use OPFS happily
+# Use OPFS happily (`happy-opfs`)
 
 [![NPM version](
   https://img.shields.io/npm/v/@themartiancompany/happy-opfs.svg)](
@@ -31,20 +31,16 @@
   https://badgen.net/npm/dm/@themartiancompany/happy-opfs)](
     https://npmjs.org/package/@themartiancompany/happy-opfs)
 
----
+[中文](
+  README.cn.md)
 
-## [中文](README.cn.md)
-
----
-
-This is a browser-compatible fs module based
-on the
-[Origin private file system](
+Browser-compatible `fs` module leveraging the
+[Origin Private File System](
   https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system)
-(OPFS), which references the
+(OPFS) specification  which references the
 [Deno Runtime File System](
   https://deno.land/api#File_System) and
-[Deno @std/fs](
+[Deno `@std/fs`](
   https://jsr.io/@std/fs)
 APIs.
 
@@ -105,9 +101,10 @@ files in a browser environment.
 
 There are significant differences between the
 standard OPFS API and familiar file system APIs
-based on path operations, such as Node.js and Deno.
+based on path operations, such as those of
+Node.js and Deno.
 The purpose of this project is to implement an API
-similar to Deno's in the browser, allowing for
+similar to those in the browser, allowing for
 convenient file operations.
 
 The return values of asynchronous APIs are of the
@@ -224,7 +221,7 @@ directory.
 
 ## License
 
-This software repository, based on
+This software repository, originally based on
 [Happy OPFS](
   https://github.com/JianJie/happy-opfs)
 by Jian Jie is released by Pellegrino Prevete

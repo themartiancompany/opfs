@@ -1,81 +1,132 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-//    ----------------------------------------------------------------------
-//    Copyright © 2024, 2025
-//                Jiang Jie
-//
-//    All rights reserved
-//    ----------------------------------------------------------------------
-//
-//    This program is free software: you can redistribute it and/or modify
-//    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation, either version 3 of the License, or
-//    (at your option) any later version.
-//
-//    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//    GNU General Public License for more details.
-//
-//    You should have received a copy of the GNU General Public License
-//    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+/**    ----------------------------------------------------------------------
+ *     Copyright ©
+ *       Jiang Jie
+ *         2024, 2025
+ *       Pellegrino Prevete
+ *         2025
+ * 
+ *     All rights reserved
+ *     ----------------------------------------------------------------------
+ * 
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ * 
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ * 
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
-
-import { Err, Ok, type IOResult, type VoidIOResult } from 'happy-rusty';
+import { Err,
+         Ok,
+         type IOResult,
+         type VoidIOResult } from 'happy-rusty';
 import invariant from 'tiny-invariant';
-import type { CopyOptions, ExistsOptions, FileLike, FileSystemHandleLike, MoveOptions, ReadDirEntrySync, ReadDirOptions, ReadFileContent, ReadOptions, SyncAgentOptions, TempOptions, WriteOptions, WriteSyncFileContent, ZipOptions } from '../fs/defines.ts';
-import { deserializeError, setGlobalOpTimeout } from './helpers.ts';
-import { callWorkerFromMain, decodeFromBuffer, decodeToString, encodeToBuffer, SyncMessenger, WorkerAsyncOp } from './shared.ts';
+import type { CopyOptions,
+              ExistsOptions,
+              FileLike,
+              FileSystemHandleLike,
+              MoveOptions,
+              ReadDirEntrySync,
+              ReadDirOptions,
+              ReadFileContent,
+              ReadOptions,
+              SyncAgentOptions,
+              TempOptions,
+              WriteOptions,
+              WriteSyncFileContent,
+              ZipOptions } from '../fs/defines.ts';
+import { deserializeError,
+	 setGlobalOpTimeout } from './helpers.ts';
+import { callWorkerFromMain,
+         decodeFromBuffer,
+         decodeToString,
+         encodeToBuffer,
+         SyncMessenger,
+         WorkerAsyncOp } from './shared.ts';
 
 /**
  * Cache the messenger instance.
  */
-let messenger: SyncMessenger;
+let
+  messenger:
+    SyncMessenger;
 
 /**
  * Communicate with worker.
  * @param options - SyncAgentOptions
  * @returns
  */
-export function connectSyncAgent(options: SyncAgentOptions): Promise<void> {
-    if (typeof window === 'undefined') {
-        throw new Error('Only can use in main thread');
+export
+  function
+    connectSyncAgent(
+      options:
+        SyncAgentOptions):
+      Promise<void> {
+    if ( typeof window === 'undefined' ) {
+        throw new Error(
+          'Only can use in main thread');
     }
-
-    if (messenger) {
-        throw new Error('Main messenger already started');
+    if ( messenger ) {
+      throw new Error(
+        'Main messenger already started');
     }
-
-    return new Promise(resolve => {
-        const {
-            worker,
+    return new Promise(
+      resolve => {
+        const
+          { worker,
             bufferLength = 1024 * 1024,
-            opTimeout = 1000,
-        } = options;
-
+            opTimeout = 1000 } =
+            options;
         // check parameters
-        invariant(worker instanceof Worker || worker instanceof URL || (typeof worker === 'string' && worker), () => 'worker must be Worker or valid URL(string)');
-        invariant(bufferLength > 16 && bufferLength % 4 === 0, () => 'bufferLength must be a multiple of 4')
-        invariant(Number.isInteger(opTimeout) && opTimeout > 0, () => 'opTimeout must be integer and greater than 0');
-
-        setGlobalOpTimeout(opTimeout);
-
-        const workerAdapter = worker instanceof Worker
-            ? worker
-            : new Worker(worker);
-
-        const sab = new SharedArrayBuffer(bufferLength);
-
-        workerAdapter.addEventListener('message', (event: MessageEvent<boolean>) => {
-            if (event.data) {
-                messenger = new SyncMessenger(sab);
-
+        invariant(
+          worker instanceof Worker ||
+          worker instanceof URL ||
+          ( typeof worker === 'string' &&
+            worker),
+	  () => 'Worker must be Worker or valid URL(string).');
+        invariant(
+          bufferLength > 16 &&
+          bufferLength % 4 === 0,
+          () => 'bufferLength must be a multiple of 4.')
+        invariant(
+          Number.isInteger(
+            opTimeout) &&
+          opTimeout > 0,
+          () => 'opTimeout must be integer and greater than 0.');
+        setGlobalOpTimeout(
+          opTimeout);
+        const
+          workerAdapter =
+            worker instanceof Worker ?
+            worker :
+            new Worker(
+              worker);
+        const
+          sab =
+            new SharedArrayBuffer(
+              bufferLength);
+        workerAdapter.addEventListener(
+          'message',
+          (event:
+             MessageEvent<boolean>) => {
+            if ( event.data ) {
+              messenger =
+                new SyncMessenger(
+                  sab);
                 resolve();
             }
-        });
-
-        workerAdapter.postMessage(sab);
-    });
+          });
+        workerAdapter.postMessage(
+          sab);
+      });
 }
 
 /**
@@ -84,7 +135,10 @@ export function connectSyncAgent(options: SyncAgentOptions): Promise<void> {
  *
  * @returns SyncMessenger instance.
  */
-export function getSyncMessenger(): SyncMessenger {
+export
+  function
+    getSyncMessenger():
+    SyncMessenger {
     return messenger;
 }
 
@@ -94,9 +148,17 @@ export function getSyncMessenger(): SyncMessenger {
  *
  * @param syncMessenger - SyncMessenger instance.
  */
-export function setSyncMessenger(syncMessenger: SyncMessenger): void {
-    invariant(syncMessenger != null, () => 'syncMessenger is null or undefined');
-    messenger = syncMessenger;
+export
+  function
+    setSyncMessenger(
+      syncMessenger:
+        SyncMessenger):
+      void {
+      invariant(
+        syncMessenger != null,
+        () => 'syncMessenger is null or undefined.');
+      messenger =
+        syncMessenger;
 }
 
 /**
@@ -106,228 +168,502 @@ export function setSyncMessenger(syncMessenger: SyncMessenger): void {
  * @returns - I/O operation result.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function callWorkerOp<T>(op: WorkerAsyncOp, ...args: any[]): IOResult<T> {
-    if (!messenger) {
-        // too early
-        return Err(new Error('Worker not initialized. Come back later.'));
+function
+  callWorkerOp<T>(
+    op:
+      WorkerAsyncOp,
+    ...args:
+      any[]):
+    IOResult<T> {
+    if ( !messenger ) {
+      // too early
+      return Err(
+        new Error(
+          'Worker not initialized. Come back later.'));
     }
-
-    const request = [op, ...args];
-    const requestData = encodeToBuffer(request);
-
+    const
+      request =
+        [ op,
+          ...args ];
+    const
+      requestData =
+        encodeToBuffer(
+          request);
     try {
-        const response = callWorkerFromMain(messenger, requestData);
-
-        const decodedResponse = decodeFromBuffer(response) as [Error, T];
-        const err = decodedResponse[0];
-        const result: IOResult<T> = err ? Err(deserializeError(err)) : Ok((decodedResponse[1] ?? undefined) as T);
-
-        return result;
-    } catch (err) {
-        return Err(err as Error);
+      const
+        response =
+          callWorkerFromMain(
+            messenger,
+            requestData);
+      const
+        decodedResponse =
+          decodeFromBuffer(
+            response) as [ Error, T ];
+      const
+        _error =
+          decodedResponse[
+            0];
+      const
+        result:
+          IOResult<T> =
+          err ?
+          Err(
+            deserializeError(
+              err)) :
+          Ok(
+            ( decodedResponse[
+                1] ?? undefined ) as T);
+      return result;
+    }
+    catch (
+      err) {
+      return Err(
+        err as Error);
     }
 }
 
 /**
  * Sync version of `createFile`.
  */
-export function createFileSync(filePath: string): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.createFile, filePath);
+export
+  function
+    createFileSync(
+      filePath:
+        string):
+      VoidIOResult {
+    return callWorkerOp(
+      WorkerAsyncOp.createFile,
+      filePath);
 }
 
 /**
  * Sync version of `mkdir`.
  */
-export function mkdirSync(dirPath: string): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.mkdir, dirPath);
+export
+  function
+    mkdirSync(
+      dirPath:
+        string):
+      VoidIOResult {
+      return callWorkerOp(
+        WorkerAsyncOp.mkdir,
+        dirPath);
 }
 
 /**
  * Sync version of `move`.
  */
-export function moveSync(srcPath: string, destPath: string, options?: MoveOptions): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.move, srcPath, destPath, options);
+export
+  function
+    moveSync(
+      srcPath:
+        string,
+      destPath:
+        string,
+      options?:
+        MoveOptions):
+      VoidIOResult {
+      return callWorkerOp(
+        WorkerAsyncOp.move,
+        srcPath,
+        destPath,
+        options);
 }
 
 /**
  * Sync version of `readDir`.
  */
-export function readDirSync(dirPath: string, options?: ReadDirOptions): IOResult<ReadDirEntrySync[]> {
-    return callWorkerOp(WorkerAsyncOp.readDir, dirPath, options);
+export
+  function
+    readDirSync(
+      dirPath:
+        string,
+      options?:
+        ReadDirOptions):
+      IOResult<ReadDirEntrySync[]> {
+    return callWorkerOp(
+      WorkerAsyncOp.readDir,
+      dirPath,
+      options);
 }
 
 /**
  * Sync version of `readFile`.
  */
-export function readFileSync(filePath: string, options: ReadOptions & {
-    encoding: 'blob';
-}): IOResult<FileLike>;
-export function readFileSync(filePath: string, options: ReadOptions & {
-    encoding: 'utf8';
-}): IOResult<string>;
-export function readFileSync(filePath: string, options?: ReadOptions & {
-    encoding: 'binary';
-}): IOResult<ArrayBuffer>;
-export function readFileSync<T extends ReadFileContent>(filePath: string, options?: ReadOptions): IOResult<T> {
-    const res: IOResult<FileLike> = callWorkerOp(WorkerAsyncOp.readBlobFile, filePath);
-
-    return res.map(file => {
+export
+  function
+    readFileSync(
+      filePath:
+        string,
+      options:
+        ReadOptions &
+        { encoding:
+            'blob'; }):
+      IOResult<FileLike>;
+export
+  function
+    readFileSync(
+      filePath:
+        string,
+      options:
+        ReadOptions &
+      { encoding:
+          'utf8'; }):
+      IOResult<string>;
+export
+  function
+    readFileSync(
+      filePath:
+        string,
+      options?:
+        ReadOptions &
+    { encoding:
+        'binary'; }):
+    IOResult<ArrayBuffer>;
+export
+  function
+    readFileSync<T extends ReadFileContent>(
+      filePath:
+        string,
+      options?:
+        ReadOptions):
+      IOResult<T> {
+    const
+      res:
+        IOResult<FileLike> =
+        callWorkerOp(
+          WorkerAsyncOp.readBlobFile,
+          filePath);
+    return res.map(
+      file => {
         // actually data is number array
-        const u8a = new Uint8Array(file.data);
-        file.data = u8a.buffer.slice(u8a.byteOffset, u8a.byteOffset + u8a.byteLength);
-
-        switch (options?.encoding) {
+        const
+          u8a =
+            new Uint8Array(
+              file.data);
+        file.data =
+          u8a.buffer.slice(
+            u8a.byteOffset,
+            u8a.byteOffset + u8a.byteLength);
+        switch (
+          options?.encoding) {
             case 'blob': {
-                return file as unknown as T;
+              return file as unknown as T;
             }
             case 'utf8': {
-                return decodeToString(new Uint8Array(file.data)) as unknown as T;
+              return decodeToString(new Uint8Array(file.data)) as unknown as T;
             }
             default: {
-                return file.data as unknown as T;
+              return file.data as unknown as T;
             }
         }
-    });
+      });
 }
 
 /**
  * Sync version of `remove`.
  */
-export function removeSync(path: string): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.remove, path);
+export
+  function
+    removeSync(
+      path:
+        string):
+      VoidIOResult {
+      return callWorkerOp(
+        WorkerAsyncOp.remove,
+        path);
 }
 
 /**
  * Sync version of `stat`.
  */
-export function statSync(path: string): IOResult<FileSystemHandleLike> {
-    return callWorkerOp(WorkerAsyncOp.stat, path);
+export
+  function
+    statSync(
+      path:
+        string):
+      IOResult<FileSystemHandleLike> {
+      return callWorkerOp(
+      WorkerAsyncOp.stat,
+      path);
 }
 
 /**
- * Serialize contents to an byte array or a string that can be sent to worker.
+ * Serialize contents to an byte array or a string
+ * that can be sent to worker.
  * @param contents
  * @returns
  */
-function serializeWriteContents(contents: WriteSyncFileContent): number[] | string {
-    return contents instanceof ArrayBuffer
-        ? [...new Uint8Array(contents)]
-        : ArrayBuffer.isView(contents)
-            ? [...new Uint8Array(contents.buffer)]
-            : contents;
+function
+  serializeWriteContents(
+    contents:
+      WriteSyncFileContent):
+    number[] |
+    string {
+    return contents instanceof ArrayBuffer ?
+           [ ...new Uint8Array(
+                      contents) ] :
+           ArrayBuffer.isView(
+             contents) ?
+             [ ...new Uint8Array(
+                        contents.buffer) ] :
+           contents;
 }
 
 /**
  * Sync version of `writeFile`.
  */
-export function writeFileSync(filePath: string, contents: WriteSyncFileContent, options?: WriteOptions): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.writeFile, filePath, serializeWriteContents(contents), options);
+export
+  function
+    writeFileSync(
+      filePath:
+        string,
+      contents:
+        WriteSyncFileContent,
+      options?:
+        WriteOptions):
+      VoidIOResult {
+      return callWorkerOp(
+        WorkerAsyncOp.writeFile,
+        filePath,
+        serializeWriteContents(
+          contents),
+        options);
 }
 
 /**
  * Sync version of `appendFile`.
  */
-export function appendFileSync(filePath: string, contents: WriteSyncFileContent): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.appendFile, filePath, serializeWriteContents(contents));
+export
+  function
+    appendFileSync(
+      filePath:
+        string,
+      contents:
+        WriteSyncFileContent):
+      VoidIOResult {
+      return callWorkerOp(
+        WorkerAsyncOp.appendFile,
+        filePath,
+        serializeWriteContents(
+          contents));
 }
 
 /**
  * Sync version of `copy`.
  */
-export function copySync(srcPath: string, destPath: string, options?: CopyOptions): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.copy, srcPath, destPath, options);
+export
+  function
+    copySync(
+      srcPath:
+        string,
+      destPath:
+        string,
+      options?:
+        CopyOptions):
+      VoidIOResult {
+      return callWorkerOp(
+        WorkerAsyncOp.copy,
+        srcPath,
+        destPath,
+        options);
 }
 
 /**
  * Sync version of `emptyDir`.
  */
-export function emptyDirSync(dirPath: string): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.emptyDir, dirPath);
+export
+  function
+    emptyDirSync(
+      dirPath:
+        string):
+      VoidIOResult {
+    return callWorkerOp(
+      WorkerAsyncOp.emptyDir,
+      dirPath);
 }
 
 /**
  * Sync version of `exists`.
  */
-export function existsSync(path: string, options?: ExistsOptions): IOResult<boolean> {
-    return callWorkerOp(WorkerAsyncOp.exists, path, options);
+export
+  function
+    existsSync(
+      path:
+        string,
+      options?:
+        ExistsOptions):
+      IOResult<boolean> {
+    return callWorkerOp(
+      WorkerAsyncOp.exists,
+      path,
+      options);
 }
 
 /**
  * Sync version of `deleteTemp`.
  */
-export function deleteTempSync(): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.deleteTemp);
+export
+  function
+    deleteTempSync():
+      VoidIOResult {
+    return callWorkerOp(
+      WorkerAsyncOp.deleteTemp);
 }
 
 /**
  * Sync version of `mkTemp`.
  */
-export function mkTempSync(options?: TempOptions): IOResult<string> {
-    return callWorkerOp(WorkerAsyncOp.mkTemp, options);
+export
+  function
+    mkTempSync(
+      options?:
+        TempOptions):
+      IOResult<string> {
+    return callWorkerOp(
+      WorkerAsyncOp.mkTemp,
+      options);
 }
 
 /**
  * Sync version of `pruneTemp`.
  */
-export function pruneTempSync(expired: Date): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.pruneTemp, expired);
+export
+  function
+    pruneTempSync(
+      expired:
+        Date):
+      VoidIOResult {
+    return callWorkerOp(
+      WorkerAsyncOp.pruneTemp,
+      expired);
 }
 
 /**
  * Sync version of `readBlobFile`.
  */
-export function readBlobFileSync(filePath: string): IOResult<FileLike> {
-    return readFileSync(filePath, {
-        encoding: 'blob',
-    });
+export
+  function
+    readBlobFileSync(
+      filePath:
+        string):
+      IOResult<FileLike> {
+    return readFileSync(
+      filePath, {
+      encoding:
+        'blob' });
 }
 
 /**
  * Sync version of `readJsonFile`.
  */
-export function readJsonFileSync<T>(filePath: string): IOResult<T> {
-    return readTextFileSync(filePath).andThen(contents => {
-        try {
-            return Ok(JSON.parse(contents));
-        } catch (e) {
-            return Err(e as Error);
-        }
-    });
+export
+  function
+    readJsonFileSync<T>(
+      filePath:
+        string):
+      IOResult<T> {
+    return readTextFileSync(
+      filePath).andThen(
+        contents => {
+          try {
+            return Ok(
+              JSON.parse(
+                contents));
+          }
+          catch (
+            _error) {
+            return Err(
+              _error as Error);
+          }
+      });
 }
 
 /**
  * Sync version of `readTextFile`.
  */
-export function readTextFileSync(filePath: string): IOResult<string> {
-    return readFileSync(filePath, {
-        encoding: 'utf8',
-    });
+export
+  function
+    readTextFileSync(
+      filePath:
+        string):
+      IOResult<string> {
+    return readFileSync(
+      filePath,
+      { encoding:
+          'utf8' });
 }
 
 /**
  * Sync version of `unzip`.
  */
-export function unzipSync(zipFilePath: string, targetPath: string): VoidIOResult {
-    return callWorkerOp(WorkerAsyncOp.unzip, zipFilePath, targetPath);
+export
+  function
+    unzipSync(
+      zipFilePath:
+        string,
+      targetPath:
+        string):
+      VoidIOResult {
+    return callWorkerOp(
+      WorkerAsyncOp.unzip,
+      zipFilePath,
+      targetPath);
 }
 
 /**
  * Sync version of `zip`.
  */
-export function zipSync(sourcePath: string, zipFilePath: string, options?: ZipOptions): VoidIOResult;
+export
+  function
+    zipSync(
+      sourcePath:
+        string,
+      zipFilePath:
+        string,
+      options?:
+        ZipOptions):
+      VoidIOResult;
 
 /**
  * Sync version of `zip`.
  */
-export function zipSync(sourcePath: string, options?: ZipOptions): IOResult<Uint8Array>;
+export
+  function
+    zipSync(
+      sourcePath:
+        string,
+      options?:
+        ZipOptions):
+      IOResult<Uint8Array>;
 
 /**
  * Sync version of `zip`.
  */
-export function zipSync<T>(sourcePath: string, zipFilePath?: string | ZipOptions, options?: ZipOptions): IOResult<T> {
-    const res = callWorkerOp(WorkerAsyncOp.zip, sourcePath, zipFilePath, options) as IOResult<number[]> | VoidIOResult;
-
-    return res.map(data => {
-        return (data ? new Uint8Array(data) : data) as T;
+export
+  function
+    zipSync<T>(
+      sourcePath:
+        string,
+      zipFilePath?:
+        string |
+        ZipOptions,
+      options?:
+        ZipOptions):
+      IOResult<T> {
+      const
+        res =
+          callWorkerOp(
+            WorkerAsyncOp.zip,
+            sourcePath,
+            zipFilePath,
+            options) as IOResult<number[]> |
+                        VoidIOResult;
+    return res.map(
+      data => {
+        return ( data ?
+                 new Uint8Array(
+                   data) :
+                 data) as T;
     });
 }
