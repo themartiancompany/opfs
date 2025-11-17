@@ -101,12 +101,12 @@ async function
  * @param srcFileHandle - The source file handle to move or copy.
  * @param destFilePath - The destination file path.
  */
-type
-  handleSrcFileToDest =
-    ( srcFileHandle:
-        FileSystemFileHandle,
-      destFilePath:
-        string ) => AsyncVoidIOResult;
+type handleSrcFileToDest =
+  ( srcFileHandle:
+      FileSystemFileHandle,
+    destFilePath:
+      string ) => AsyncVoidIOResult;
+
 /**
  * Copy or move a file or directory from one path to another.
  * @param srcPath - The source file/directory path.
@@ -125,7 +125,7 @@ async function
     handler:
       handleSrcFileToDest,
     overwrite = true):
-    lAsyncVoidIOResult {
+    AsyncVoidIOResult {
     assertAbsolutePath(
       destPath);
     return (
@@ -291,8 +291,11 @@ export
     return mkDestFromSrc(
       srcPath,
       destPath,
-      async (srcHandle,
-             destPath) => {
+      async (
+        srcHandle:
+          FileSystemFileHandle,
+        destPath:
+          string) => {
         return await writeFile(
           destPath,
           await srcHandle.getFile());

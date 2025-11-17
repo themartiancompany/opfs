@@ -52,26 +52,22 @@ export function
     requestInit?:
       UploadRequestInit):
     FetchTask<Response> {
+    type T =
+      Response;
     let
-      _aborted,
-      _fetchTask;
-    type
-      T =
-        Response;
+      aborted:
+        boolean;
+    let
+      fetchTask:
+        FetchTask<T>;
     assertFileUrl(
       fileUrl);
     aborted =
       false;
-    let
-      fetchTask:
-        FetchTask<T>;
-    let
-      fetchResponse:
-        FetchResponse<T>;
     const
       response =
       ( async ():
-          fetchResponse => {
+          FetchResponse<Response> => {
           const
             fileRes =
               await readBlobFile(
@@ -114,7 +110,7 @@ export function
       abort(
         reason?:
           any):
-	void {
+        void {
         aborted =
           true;
           fetchTask?.abort(
@@ -125,7 +121,7 @@ export function
           return aborted;
         },
         get response():
-          fetchResponse {
+          FetchResponse<Response> {
           return response;
       },
     };

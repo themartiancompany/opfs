@@ -67,7 +67,7 @@ export function
     fileUrl:
       string,
     filePath:
-      string
+      string,
     requestInit?:
       FsRequestInit):
     FetchTask<Response>;
@@ -81,7 +81,8 @@ export function
       FsRequestInit):
     FetchTask<Response | DownloadFileTempResponse> {
     let
-      aborted,
+      aborted:
+        boolean,
       saveToTemp;
     assertFileUrl(
       fileUrl);
@@ -148,7 +149,7 @@ export function
           true;
         fetchTask.abort(
           reason);
-        l},
+        },
       get aborted():
         boolean {
         return aborted;
