@@ -25,7 +25,7 @@
 
 
 =====================================
-Happy OPFS Authors
+OPFS Module Authors
 =====================================
 
 * Jiang Jie <jiang115jie@gmail.com>

@@ -1,17 +1,17 @@
 {
   "name":
-    "@themartiancompany/happy-opfs",
+    "@themartiancompany/opfs",
   "description":
-    "A browser-compatible fs module inspired by the Deno fs and @std/fs APIs, based on OPFS implementation.",
+    "Browser-compatible (OPFS) Node/Deno 'fs' module.",
   "version":
     "1.8.11",
   "homepage":
-    "https://github.com/JiangJie/happy-opfs",
+    "https://github.com/themartiancompany/opfs",
   "license":
     "GPL-3.0",
   "bugs": {
     "url":
-      "https://github.com/JiangJie/happy-opfs/issues"
+      "https://github.com/themartiancompany/opfs/issues"
   },
   "author": {
     "name":
@@ -59,7 +59,7 @@
   "source":
     "src/mod.ts",
   "man":
-    "man/happy-opfs.1",
+    "man/opfs.1",
   "main":
     "dist/main.cjs",
   "module":
@@ -90,7 +90,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/themartiancompany/happy-opfs.git"
+    "url": "git+https://github.com/themartiancompany/opfs.git"
   },
   "devDependencies": {
     "@eslint/js":

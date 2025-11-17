@@ -21,7 +21,7 @@
 
 PREFIX ?= /usr/local
 _NAMESPACE=themartiancompany
-_PROJECT=happy-opfs
+_PROJECT=opfs
 DOC_DIR=$(DESTDIR)$(PREFIX)/share/doc/$(_PROJECT)
 USR_DIR=$(DESTDIR)$(PREFIX)
 BIN_DIR=$(DESTDIR)$(PREFIX)/bin

@@ -1,62 +1,62 @@
-[comment]: <> (SPDX-License-Identifier: GPL-3.0)
+[comment]: <> (
+  SPDX-License-Identifier: GPL-3.0
 
-[comment]: <> (-------------------------------------------------------------)
-[comment]: <> (Copyright © 2024, 2025)
-[comment]: <> (            Jiang Jie)
-[comment]: <> (Copyright © 2025)
-[comment]: <> (            Pellegrino Prevete)
-[comment]: <> (All rights reserved)
-[comment]: <> (-------------------------------------------------------------)
-
-[comment]: <> (This program is free software: you can redistribute)
-[comment]: <> (it and/or modify it under the terms of the GNU)
-[comment]: <> (General Public License as published by the Free)
-[comment]: <> (Software Foundation, either version 3 of the License.)
-
-[comment]: <> (This program is distributed in the hope that it will be useful,)
-[comment]: <> (but WITHOUT ANY WARRANTY; without even the implied warranty of)
-[comment]: <> (MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the)
-[comment]: <> (GNU General Public License for more details.)
-
-[comment]: <> (You should have received a copy of the GNU General Public)
-[comment]: <> (License along with this program.)
-[comment]: <> (If not, see <https://www.gnu.org/licenses/>.)
+  -------------------------------------------------------------
+  Copyright © 2024, 2025
+              Jiang Jie
+  Copyright © 2025
+              Pellegrino Prevete
+  All rights reserved
+  -------------------------------------------------------------
+  
+  This program is free software: you can redistribute
+  it and/or modify it under the terms of the GNU
+  General Public License as published by the Free
+  Software Foundation, either version 3 of the License.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public
+  License along with this program.
+  If not, see <https://www.gnu.org/licenses/>.)
 
 
 # 快乐地使用 OPFS
 
 [![NPM version](
-     http://img.shields.io/npm/v/happy-opfs.svg)](
-       https://npmjs.org/package/happy-opfs)
-[![JSR Version](
-     https://jsr.io/badges/@happy-js/happy-opfs)](
-       https://jsr.io/@happy-js/happy-opfs)
-[![JSR Score](
-     https://jsr.io/badges/@happy-js/happy-opfs/score)](
-       https://jsr.io/@happy-js/happy-opfs/score)
+     http://img.shields.io/npm/v/@themartiancompany/opfs.svg)](
+       https://npmjs.org/package/@themartiancompany/opfs)
 
-这是一套参考 [Deno Runtime File_System](https://deno.land/api#File_System) 和 [Deno @std/fs](https://jsr.io/@std/fs) API，基于 OPFS 实现的浏览器可用的 fs 模块。
+[![en](
+  https://img.shields.io/badge/lang-en-black.svg)](
+  README.md)
+
+
+这是一套参考 [Deno Runtime File System](
+  https://deno.land/api#File_System)
+和 [Deno @std/fs](
+  https://jsr.io/@std/fs)
+API，基于 OPFS 实现的浏览器可用的 fs 模块。
 
 ## 安装
 
 ```sh
-# via pnpm
-pnpm add happy-opfs
-# or via yarn
-yarn add happy-opfs
-# or just from npm
-npm install --save happy-opfs
-# via JSR
-jsr add @happy-js/happy-opfs
+npm \
+  install \
+  --save \
+  "@themartiancompany/opfs"
 ```
 
 ## 什么是 OPFS
 
 OPFS 是 [Origin private file system](
-           https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system)
+  https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system)
 的简称，旨在为浏览器环境提供一套文件系统 API 来操作本地文件。
 
-## 为什么会有 happy-opfs
+## 为什么会有 'opfs`
 
 标准的 OPFS API 和我们熟知的基于路径操作的文件系统 API 如 Node.js、Deno
 存在较大的区别，本项目即是为了实现在浏览器中也能拥有 Deno
@@ -96,7 +96,7 @@ OPFS 是 [Origin private file system](
 ## 示例
 
 ```ts
-import * as fs from 'happy-opfs';
+import * as fs from 'opfs';
 
 (async () => {
     const mockServer = 'https://16a6dafa-2258-4a83-88fa-31a409e42b17.mock.pstmn.io';
@@ -258,8 +258,8 @@ import * as fs from 'happy-opfs';
 找到，也可以通过以下方式查看运行时效果。
 
 ```
-git clone https://github.com/JiangJie/happy-opfs.git
-cd happy-opfs
+git clone https://github.com/themartiancompany/opfs.git
+cd opfs
 pnpm install
 pnpm start
 ```

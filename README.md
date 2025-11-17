@@ -23,14 +23,11 @@
   License along with this program.
   If not, see <https://www.gnu.org/licenses/>.)
 
-# Use OPFS happily (`happy-opfs`)
+# Origin Private File System module (`@themartiancompany/opfs`)
 
 [![NPM version](
-  https://img.shields.io/npm/v/@themartiancompany/happy-opfs.svg)](
-    https://npmjs.org/package/@themartiancompany/happy-opfs)
-[![NPM downloads](
-  https://badgen.net/npm/dm/@themartiancompany/happy-opfs)](
-    https://npmjs.org/package/@themartiancompany/happy-opfs)
+  https://img.shields.io/npm/v/@themartiancompany/opfs.svg)](
+    https://npmjs.org/package/@themartiancompany/opfs)
 
 [![cn](
   https://img.shields.io/badge/lang-cn-red.svg)](
@@ -46,66 +43,15 @@ Browser-compatible `fs` module leveraging the
   https://jsr.io/@std/fs)
 APIs.
 
-## Installation
-
-### From source
-
-To install a locally built version of the
-library run
-
-```bash
-$ make \
-    all
-```
-
-An `happy-opfs-<version>.tgz` npm archive will be generated
-in the root of the repository.
-
-To install the library system-wide run
-
-```bash
-# make \
-    install-npm
-```
-
-To download the library from npm run
-
-```bash
-npm \
-  install \
-  --save \
-    "@themartiancompany/happy-opfs"
-```
-
-To install it as system package from the
-[Ur](
-  https://github.com/themartiancompany/ur)
-run
-
-```bash
-ur \
-  "nodejs-happy-opfs"
-```
-
-A mirror of the Ur universal recipe
-has been made available on The Martian
-Company's Github at
-[`nodejs-happy-opfs-ur`](
-  https://github.com/themartiancompany/nodejs-happy-opfs-ur).
-
-## What's the OPFS
-
 OPFS stands for *origin private file system* 
 and it is a file system API for manipulating local
 files in a browser environment.
-
-## Why happy-opfs
 
 There are significant differences between the
 standard OPFS API and familiar file system APIs
 based on path operations, such as those of
 Node.js and Deno.
-The purpose of this project is to implement an API
+The purpose of this module is to implement an API
 similar to those in the browser, allowing for
 convenient file operations.
 
@@ -115,17 +61,84 @@ The return values of asynchronous APIs are of the
 type, similar to Rust's `Result` enum type,
 providing a more user-friendly error handling approach.
 
-## Why Reference Deno Instead of Node.js
+As to why the library targets Deno, that's because:
 
-- The early versions of the Node.js fs API were based
+- early versions of the Node.js fs API were based
   on callback syntax, although newer versions support
-  Promise syntax.
-  On the other hand, the Deno fs API was designed from
+  Promise syntax;
+  on the other hand, the Deno fs API was designed from
   the beginning with Promise syntax. Therefore, Deno has
   less historical baggage, making it a more suitable choice
-  for implementing a native-compatible API.
+  for implementing a native-compatible API;
 - Deno natively supports TypeScript, while Node.js
   currently does not without the use of additional tools.
+
+Originally based on the 
+[Happy OPFS](
+  https://github.com/JianJie/happy-opfs)
+module by Jian Jie and renamed
+because I've noticed there was no
+`fs.createReadStream` implementation,
+while the other available
+[OPFS Tools`](
+  )
+module had but didn't call it verbatim
+so I've thought it may have
+been appropriate to make everybody including
+the module potentially less happy and check
+whether if a third module including the function
+and simply called `opfs` can show how much the
+`namespace/package` model works on the field.
+
+## Installation
+
+To install a locally built version of the
+library run
+
+```bash
+$ make \
+    all
+```
+
+An `opfs-<version>.tgz` npm archive will be generated
+in the root of the repository.
+
+To install the library system-wide run
+
+```bash
+# make \
+    install-npm
+```
+
+To install it as a
+[DogeOS](
+  https://githubcom/themartiancompany/dogeos)
+system package from the
+[Ur](
+  https://github.com/themartiancompany/ur)
+uncensorable user repository and application
+store run
+
+```bash
+ur \
+  "nodejs-opfs"
+```
+
+A mirror of the Ur universal recipe
+has been made available on The Martian
+Company's Github at
+[`nodejs-opfs-ur`](
+  https://github.com/themartiancompany/nodejs-opfs-ur).
+
+To download the library from
+the NPM Registry run
+
+```bash
+npm \
+  install \
+  --save \
+    "@themartiancompany/opfs"
+```
 
 ## Synchronous support
 
@@ -154,7 +167,7 @@ and
 otherwise a `ReferenceError: SharedArrayBuffer is not defined`
 error will be thrown.
 
-The headers are automatically respectively by
+The headers are automatically set up respectively by
 Parcel and Serve in the Typescript and
 Javascript examples below.
 
@@ -223,8 +236,10 @@ directory.
 
 ## License
 
-This software repository, originally based on
-[Happy OPFS](
-  https://github.com/JianJie/happy-opfs)
-by Jian Jie is released by Pellegrino Prevete
-under the terms of the GNU General Public License version 3.
+This software repository by Jian Jie
+and Pellegrino Prevete is released
+under the terms of the GNU Affero
+General Public License version 3.
+Portions of the works authored by
+Jian are released under GNU General
+Public License version 3.
