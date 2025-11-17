@@ -202,26 +202,22 @@ export
 export
   class SyncMessenger {
     // View of SharedArrayBuffer, used to communicate between main thread and worker.
-    readonly
-      i32a:
-        Int32Array;
+    readonly i32a:
+      Int32Array;
     // View of the same SharedArrayBuffer, used to read and write binary data.
-    readonly
-      u8a:
-        Uint8Array;
+    readonly u8a:
+      Uint8Array;
     // 4 int: MAIN_LOCK_INDEX WORKER_LOCK_INDEX DATA_INDEX NOT_USE
-    readonly
-      headerLength =
+    readonly headerLength =
        4 * 4;
     // maximum length of data to be sent. If data is longer than this, it will throw an error.
-    readonly
-      maxDataLength:
-        number;
+    readonly maxDataLength:
+      number;
     constructor(
       sab:
         SharedArrayBuffer) {
       this.i32a =
-        nrw Int32Array(
+        new Int32Array(
           sab);
         this.u8a =
           new Uint8Array(

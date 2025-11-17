@@ -43,22 +43,21 @@ import { readBlobFile } from './opfs_ext.ts';
  * @returns A promise that resolves to an `AsyncIOResult`
  *          indicating whether the file was successfully uploaded.
  */
-export
-  function
-    uploadFile(
-      filePath:
-        string,
-      fileUrl:
-        string,
-      requestInit?:
-        UploadRequestInit):
-      FetchTask<Response> {
-      let
-        _aborted,
-        _fetchTask;
-      type
-        T =
-          Response;
+export function
+  uploadFile(
+    filePath:
+      string,
+    fileUrl:
+      string,
+    requestInit?:
+      UploadRequestInit):
+    FetchTask<Response> {
+    let
+      _aborted,
+      _fetchTask;
+    type
+      T =
+        Response;
     assertFileUrl(
       fileUrl);
     aborted =
@@ -66,10 +65,13 @@ export
     let
       fetchTask:
         FetchTask<T>;
+    let
+      fetchResponse:
+        FetchResponse<T>;
     const
       response =
       ( async ():
-          FetchResponse<T> => {
+          fetchResponse => {
           const
             fileRes =
               await readBlobFile(
@@ -123,7 +125,7 @@ export
           return aborted;
         },
         get response():
-          FetchResponse<T> {
+          fetchResponse {
           return response;
       },
     };

@@ -206,19 +206,19 @@ function
       const
         result:
           IOResult<T> =
-          err ?
+          _error ?
           Err(
             deserializeError(
-              err)) :
+              _error)) :
           Ok(
             ( decodedResponse[
                 1] ?? undefined ) as T);
       return result;
     }
     catch (
-      err) {
+      _error) {
       return Err(
-        err as Error);
+        _error as Error);
     }
 }
 
