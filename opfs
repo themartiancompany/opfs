@@ -47,12 +47,28 @@ function
         _input_file);
     const
       _writer =
+        _file_obj.createReader();
+  return _writer;
+}
+
+function
+  _read_stream_create(
+    _input_file,
+    _options) {
+  const
+    _file_obj =
+      _file(
+        _input_file);
+    const
+      _writer =
         _file_obj.createWriter();
   return _writer;
 }
 
-_opfs.createReadStream =
-  _read_stream_create;
 
 module.exports =
   _opfs;
+module.exports.createReadStream =
+  _read_stream_create;
+module.exports.createWriteStream =
+  _write_stream_create;
