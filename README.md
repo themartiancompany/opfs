@@ -71,7 +71,7 @@ As to why the library targets Deno, that's because:
 
 Originally based on the 
 [Happy OPFS](
-  https://github.com/JianJie/happy-opfs)
+  https://github.com/JiangJie/happy-opfs)
 module by Jian Jie and renamed
 because I've noticed there was no
 `fs.createReadStream` implementation,
