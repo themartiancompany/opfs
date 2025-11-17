@@ -1,27 +1,23 @@
-[comment]: <> (
-  SPDX-License-Identifier: GPL-3.0
+[comment]: <> (SPDX-License-Identifier: AGPL-3.0)
 
-  -------------------------------------------------------------
-  Copyright © 2024, 2025
-              Jiang Jie
-  Copyright © 2025
-              Pellegrino Prevete
-  All rights reserved
-  -------------------------------------------------------------
-  
-  This program is free software: you can redistribute
-  it and/or modify it under the terms of the GNU
-  General Public License as published by the Free
-  Software Foundation, either version 3 of the License.
-  
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-  GNU General Public License for more details.
-  
-  You should have received a copy of the GNU General Public
-  License along with this program.
-  If not, see <https://www.gnu.org/licenses/>.)
+[comment]: <> (-------------------------------------------------------------)
+[comment]: <> (Copyright © 2024, 2025  Pellegrino Prevete)
+[comment]: <> (All rights reserved)
+[comment]: <> (-------------------------------------------------------------)
+
+[comment]: <> (This program is free software: you can redistribute)
+[comment]: <> (it and/or modify it under the terms of the GNU Affero)
+[comment]: <> (General Public License as published by the Free)
+[comment]: <> (Software Foundation, either version 3 of the License.)
+
+[comment]: <> (This program is distributed in the hope that it will be useful,)
+[comment]: <> (but WITHOUT ANY WARRANTY; without even the implied warranty of)
+[comment]: <> (MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the)
+[comment]: <> (GNU Affero General Public License for more details.)
+
+[comment]: <> (You should have received a copy of the GNU Affero General Public)
+[comment]: <> (License along with this program.)
+[comment]: <> (If not, see <https://www.gnu.org/licenses/>.)
 
 
 # 快乐地使用 OPFS
