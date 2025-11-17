@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / FileEncoding
+[@themartiancompany/happy-opfs](../README.md) / FileEncoding
 
 # Type Alias: FileEncoding
 

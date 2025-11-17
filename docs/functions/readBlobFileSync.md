@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / readBlobFileSync
+[@themartiancompany/happy-opfs](../README.md) / readBlobFileSync
 
 # Function: readBlobFileSync()
 
@@ -10,7 +10,7 @@
 function readBlobFileSync(filePath): IOResult<FileLike>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:547
+Defined in: worker/opfs\_worker\_adapter.ts:544
 
 Sync version of `readBlobFile`.
 

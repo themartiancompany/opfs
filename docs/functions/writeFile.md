@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / writeFile
+[@themartiancompany/happy-opfs](../README.md) / writeFile
 
 # Function: writeFile()
 
@@ -13,7 +13,7 @@ function writeFile(
    options?): AsyncVoidIOResult
 ```
 
-Defined in: fs/opfs\_core.ts:369
+Defined in: fs/opfs\_core.ts:368
 
 Writes content to a file at the specified path.
 

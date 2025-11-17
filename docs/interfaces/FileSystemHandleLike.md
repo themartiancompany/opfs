@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / FileSystemHandleLike
+[@themartiancompany/happy-opfs](../README.md) / FileSystemHandleLike
 
 # Interface: FileSystemHandleLike
 

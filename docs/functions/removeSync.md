@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / removeSync
+[@themartiancompany/happy-opfs](../README.md) / removeSync
 
 # Function: removeSync()
 
@@ -10,7 +10,7 @@
 function removeSync(path): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:368
+Defined in: worker/opfs\_worker\_adapter.ts:365
 
 Sync version of `remove`.
 

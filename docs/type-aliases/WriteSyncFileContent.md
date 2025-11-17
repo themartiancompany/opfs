@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / WriteSyncFileContent
+[@themartiancompany/happy-opfs](../README.md) / WriteSyncFileContent
 
 # Type Alias: WriteSyncFileContent
 

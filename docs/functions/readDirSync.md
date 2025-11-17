@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / readDirSync
+[@themartiancompany/happy-opfs](../README.md) / readDirSync
 
 # Function: readDirSync()
 
@@ -10,7 +10,7 @@
 function readDirSync(dirPath, options?): IOResult<ReadDirEntrySync[]>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:278
+Defined in: worker/opfs\_worker\_adapter.ts:275
 
 Sync version of `readDir`.
 

@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / emptyDirSync
+[@themartiancompany/happy-opfs](../README.md) / emptyDirSync
 
 # Function: emptyDirSync()
 
@@ -10,7 +10,7 @@
 function emptyDirSync(dirPath): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:477
+Defined in: worker/opfs\_worker\_adapter.ts:474
 
 Sync version of `emptyDir`.
 

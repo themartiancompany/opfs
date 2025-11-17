@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / isDirectoryHandle
+[@themartiancompany/happy-opfs](../README.md) / isDirectoryHandle
 
 # Function: isDirectoryHandle()
 

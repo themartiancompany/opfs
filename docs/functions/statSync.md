@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / statSync
+[@themartiancompany/happy-opfs](../README.md) / statSync
 
 # Function: statSync()
 
@@ -10,7 +10,7 @@
 function statSync(path): IOResult<FileSystemHandleLike>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:382
+Defined in: worker/opfs\_worker\_adapter.ts:379
 
 Sync version of `stat`.
 

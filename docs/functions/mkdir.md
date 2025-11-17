@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / mkdir
+[@themartiancompany/happy-opfs](../README.md) / mkdir
 
 # Function: mkdir()
 

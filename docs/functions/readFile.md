@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / readFile
+[@themartiancompany/happy-opfs](../README.md) / readFile
 
 # Function: readFile()
 

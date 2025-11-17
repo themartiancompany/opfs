@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / createFileSync
+[@themartiancompany/happy-opfs](../README.md) / createFileSync
 
 # Function: createFileSync()
 
@@ -10,7 +10,7 @@
 function createFileSync(filePath): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:230
+Defined in: worker/opfs\_worker\_adapter.ts:227
 
 Sync version of `createFile`.
 

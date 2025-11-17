@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / unzipSync
+[@themartiancompany/happy-opfs](../README.md) / unzipSync
 
 # Function: unzipSync()
 
@@ -10,7 +10,7 @@
 function unzipSync(zipFilePath, targetPath): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:602
+Defined in: worker/opfs\_worker\_adapter.ts:599
 
 Sync version of `unzip`.
 

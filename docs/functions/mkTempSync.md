@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / mkTempSync
+[@themartiancompany/happy-opfs](../README.md) / mkTempSync
 
 # Function: mkTempSync()
 
@@ -10,7 +10,7 @@
 function mkTempSync(options?): IOResult<string>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:519
+Defined in: worker/opfs\_worker\_adapter.ts:516
 
 Sync version of `mkTemp`.
 

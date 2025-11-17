@@ -1,8 +1,8 @@
-**@themartiancompany/opfs**
+**@themartiancompany/happy-opfs**
 
 ***
 
-# @themartiancompany/opfs
+# @themartiancompany/happy-opfs
 
 ## Classes
 

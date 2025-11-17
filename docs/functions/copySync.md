@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / copySync
+[@themartiancompany/happy-opfs](../README.md) / copySync
 
 # Function: copySync()
 
@@ -13,7 +13,7 @@ function copySync(
    options?): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:457
+Defined in: worker/opfs\_worker\_adapter.ts:454
 
 Sync version of `copy`.
 

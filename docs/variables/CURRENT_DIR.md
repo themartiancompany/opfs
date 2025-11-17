@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / CURRENT\_DIR
+[@themartiancompany/happy-opfs](../README.md) / CURRENT\_DIR
 
 # Variable: CURRENT\_DIR
 

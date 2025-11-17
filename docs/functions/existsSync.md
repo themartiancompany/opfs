@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / existsSync
+[@themartiancompany/happy-opfs](../README.md) / existsSync
 
 # Function: existsSync()
 
@@ -10,7 +10,7 @@
 function existsSync(path, options?): IOResult<boolean>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:491
+Defined in: worker/opfs\_worker\_adapter.ts:488
 
 Sync version of `exists`.
 

@@ -23,8 +23,8 @@
 # 快乐地使用 OPFS
 
 [![NPM version](
-     http://img.shields.io/npm/v/@themartiancompany/opfs.svg)](
-       https://npmjs.org/package/@themartiancompany/opfs)
+     http://img.shields.io/npm/v/@themartiancompany/happy-opfs.svg)](
+       https://npmjs.org/package/@themartiancompany/happy-opfs)
 
 [![en](
   https://img.shields.io/badge/lang-en-black.svg)](
@@ -43,7 +43,7 @@ API，基于 OPFS 实现的浏览器可用的 fs 模块。
 npm \
   install \
   --save \
-  "@themartiancompany/opfs"
+  "@themartiancompany/happy-opfs"
 ```
 
 ## 什么是 OPFS
@@ -92,7 +92,7 @@ OPFS 是 [Origin private file system](
 ## 示例
 
 ```ts
-import * as fs from 'opfs';
+import * as fs from 'happy-opfs';
 
 (async () => {
     const mockServer = 'https://16a6dafa-2258-4a83-88fa-31a409e42b17.mock.pstmn.io';

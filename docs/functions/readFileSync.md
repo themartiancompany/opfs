@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / readFileSync
+[@themartiancompany/happy-opfs](../README.md) / readFileSync
 
 # Function: readFileSync()
 
@@ -12,7 +12,7 @@
 function readFileSync(filePath, options): IOResult<FileLike>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:295
+Defined in: worker/opfs\_worker\_adapter.ts:292
 
 Sync version of `readFile`.
 
@@ -33,7 +33,7 @@ Sync version of `readFile`.
 function readFileSync(filePath, options): IOResult<string>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:305
+Defined in: worker/opfs\_worker\_adapter.ts:302
 
 Sync version of `readFile`.
 
@@ -54,7 +54,7 @@ Sync version of `readFile`.
 function readFileSync(filePath, options?): IOResult<ArrayBuffer>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:315
+Defined in: worker/opfs\_worker\_adapter.ts:312
 
 Sync version of `readFile`.
 

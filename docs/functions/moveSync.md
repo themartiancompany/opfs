@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / moveSync
+[@themartiancompany/happy-opfs](../README.md) / moveSync
 
 # Function: moveSync()
 
@@ -13,7 +13,7 @@ function moveSync(
    options?): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:258
+Defined in: worker/opfs\_worker\_adapter.ts:255
 
 Sync version of `move`.
 

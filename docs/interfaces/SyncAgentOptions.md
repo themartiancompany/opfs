@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / SyncAgentOptions
+[@themartiancompany/happy-opfs](../README.md) / SyncAgentOptions
 
 # Interface: SyncAgentOptions
 

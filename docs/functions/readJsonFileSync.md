@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / readJsonFileSync
+[@themartiancompany/happy-opfs](../README.md) / readJsonFileSync
 
 # Function: readJsonFileSync()
 
@@ -10,7 +10,7 @@
 function readJsonFileSync<T>(filePath): IOResult<T>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:562
+Defined in: worker/opfs\_worker\_adapter.ts:559
 
 Sync version of `readJsonFile`.
 

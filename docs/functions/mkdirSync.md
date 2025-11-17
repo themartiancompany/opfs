@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / mkdirSync
+[@themartiancompany/happy-opfs](../README.md) / mkdirSync
 
 # Function: mkdirSync()
 
@@ -10,7 +10,7 @@
 function mkdirSync(dirPath): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:244
+Defined in: worker/opfs\_worker\_adapter.ts:241
 
 Sync version of `mkdir`.
 

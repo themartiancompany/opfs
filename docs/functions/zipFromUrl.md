@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / zipFromUrl
+[@themartiancompany/happy-opfs](../README.md) / zipFromUrl
 
 # Function: zipFromUrl()
 

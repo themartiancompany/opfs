@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / appendFileSync
+[@themartiancompany/happy-opfs](../README.md) / appendFileSync
 
 # Function: appendFileSync()
 
@@ -10,7 +10,7 @@
 function appendFileSync(filePath, contents): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:439
+Defined in: worker/opfs\_worker\_adapter.ts:436
 
 Sync version of `appendFile`.
 

@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / pruneTempSync
+[@themartiancompany/happy-opfs](../README.md) / pruneTempSync
 
 # Function: pruneTempSync()
 
@@ -10,7 +10,7 @@
 function pruneTempSync(expired): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:533
+Defined in: worker/opfs\_worker\_adapter.ts:530
 
 Sync version of `pruneTemp`.
 

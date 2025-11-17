@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / stat
+[@themartiancompany/happy-opfs](../README.md) / stat
 
 # Function: stat()
 
@@ -10,7 +10,7 @@
 function stat(path): AsyncIOResult<FileSystemHandle>
 ```
 
-Defined in: fs/opfs\_core.ts:316
+Defined in: fs/opfs\_core.ts:315
 
 Retrieves the status of a file or directory at the specified path.
 

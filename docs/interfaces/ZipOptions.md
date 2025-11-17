@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / ZipOptions
+[@themartiancompany/happy-opfs](../README.md) / ZipOptions
 
 # Interface: ZipOptions
 

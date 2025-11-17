@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / writeFileSync
+[@themartiancompany/happy-opfs](../README.md) / writeFileSync
 
 # Function: writeFileSync()
 
@@ -13,7 +13,7 @@ function writeFileSync(
    options?): VoidIOResult
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:418
+Defined in: worker/opfs\_worker\_adapter.ts:415
 
 Sync version of `writeFile`.
 

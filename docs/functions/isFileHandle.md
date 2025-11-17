@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / isFileHandle
+[@themartiancompany/happy-opfs](../README.md) / isFileHandle
 
 # Function: isFileHandle()
 

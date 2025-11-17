@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / ROOT\_DIR
+[@themartiancompany/happy-opfs](../README.md) / ROOT\_DIR
 
 # Variable: ROOT\_DIR
 

@@ -1,8 +1,8 @@
-[**@themartiancompany/opfs**](../README.md)
+[**@themartiancompany/happy-opfs**](../README.md)
 
 ***
 
-[@themartiancompany/opfs](../README.md) / readTextFileSync
+[@themartiancompany/happy-opfs](../README.md) / readTextFileSync
 
 # Function: readTextFileSync()
 
@@ -10,7 +10,7 @@
 function readTextFileSync(filePath): IOResult<string>
 ```
 
-Defined in: worker/opfs\_worker\_adapter.ts:587
+Defined in: worker/opfs\_worker\_adapter.ts:584
 
 Sync version of `readTextFile`.
 
