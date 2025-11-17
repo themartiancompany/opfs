@@ -73,6 +73,41 @@ build-man:
 	  "man/$(_PROJECT).1.rst" \
 	  "build/man/$(_PROJECT).1"
 
+build-docs:
+
+	mkdir \
+	  -p \
+	  "build"; \
+	_files=( \
+	  "README.md" \
+	  "README.cn.md" \
+	  "COPYING" \
+	  "AUTHORS.rst" \
+	  "eslint.config.mjs" \
+	  "package.json" \
+	  "rollup.config.mjs" \
+	  "src" \
+	  "tests" \
+	  "tsconfig.json" \
+	  "typedoc.json" \
+	) ; \
+	cp \
+	  -r \
+	  "$${_files[@]}" \
+	  "build"; \
+	cd \
+	  "build"; \
+	_version="$$( \
+	  npm \
+	    view \
+	      "$$(pwd)" \
+	      "version")"; \
+        npm \
+	  install; \
+	npm \
+	  run \
+	    "docs";
+
 build-npm:
 
 	mkdir \
@@ -85,7 +120,6 @@ build-npm:
 	  "AUTHORS.rst" \
 	  "docs" \
 	  "eslint.config.mjs" \
-	  "jsr.json" \
 	  "package.json" \
 	  "rollup.config.mjs" \
 	  "src" \
@@ -168,4 +202,4 @@ install-man:
 	  "man/$(_PROJECT).1.rst" \
 	  "$(MAN_DIR)/man1/$(_PROJECT).1"
 
-.PHONY: check build-man build-npm install install-man install-npm publish-npm shellcheck
+.PHONY: check build-docs build-man build-npm install install-man install-npm publish-npm shellcheck

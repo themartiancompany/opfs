@@ -79,8 +79,6 @@
       "npx rimraf dist && npm run check && npm run lint",
     "build":
       "npm install --save-dev && npx rollup --config rollup.config.mjs",
-    "predocs":
-      "npx dlx rimraf docs",
     "docs":
       "typedoc",
     "prepublishOnly":
