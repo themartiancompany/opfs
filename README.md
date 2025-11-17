@@ -19,7 +19,7 @@
 [comment]: <> (License along with this program.)
 [comment]: <> (If not, see <https://www.gnu.org/licenses/>.)
 
-# Origin Private File System module (`@themartiancompany/opfs`)
+# Use IPFS Happly (`@themartiancompany/happy-opfs`)
 
 [![NPM version](
   https://img.shields.io/npm/v/@themartiancompany/opfs.svg)](
@@ -72,19 +72,7 @@ As to why the library targets Deno, that's because:
 Originally based on the 
 [Happy OPFS](
   https://github.com/JiangJie/happy-opfs)
-module by Jian Jie and renamed
-because I've noticed there was no
-`fs.createReadStream` implementation,
-while the other available
-[OPFS Tools](
-  https://github.com/hughfenghen/opfs-tools)
-module had but didn't call it verbatim
-so I've thought it may have
-been appropriate to make everybody including
-the module potentially less happy and check
-whether if a third module including the function
-and simply called `opfs` can show how much the
-`namespace/package` model works on the field.
+module by Jian Jie.
 
 ## Installation
 
@@ -117,14 +105,14 @@ store run
 
 ```bash
 ur \
-  "nodejs-opfs"
+  "nodejs-happy-opfs"
 ```
 
 A mirror of the Ur universal recipe
 has been made available on The Martian
 Company's Github at
-[`nodejs-opfs-ur`](
-  https://github.com/themartiancompany/nodejs-opfs-ur).
+[`nodejs-happy-opfs-ur`](
+  https://github.com/themartiancompany/nodejs-happy-opfs-ur).
 
 To download the library from
 the NPM Registry run
@@ -133,7 +121,7 @@ the NPM Registry run
 npm \
   install \
   --save \
-    "@themartiancompany/opfs"
+    "@themartiancompany/happy-opfs"
 ```
 
 ## Synchronous support

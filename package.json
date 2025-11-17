@@ -1,17 +1,17 @@
 {
   "name":
-    "@themartiancompany/opfs",
+    "@themartiancompany/happy-opfs",
   "description":
     "Browser-compatible (OPFS) Node/Deno 'fs' module.",
   "version":
     "2.0.0",
   "homepage":
-    "https://github.com/themartiancompany/opfs",
+    "https://github.com/themartiancompany/happy-opfs",
   "license":
     "AGPL-3.0",
   "bugs": {
     "url":
-      "https://github.com/themartiancompany/opfs/issues"
+      "https://github.com/themartiancompany/happy-opfs/issues"
   },
   "author":
     { "name":
@@ -67,7 +67,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/themartiancompany/opfs.git"
+    "url": "git+https://github.com/themartiancompany/happy-opfs.git"
   },
   "devDependencies": {
     "@eslint/js":
