@@ -23,14 +23,16 @@
 //    You should have received a copy of the GNU General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import { defineConfig } from "eslint/config";
 
-export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.strict,
-  ...tseslint.configs.stylistic,
-  { ignores: [
-    'dist'
-    ], }
-);
+export default defineConfig([
+ { ignores: [
+     "build/**",
+     "eslint.config.js"
+   ],
+   rules:
+     { semi:
+         "error",
+       "prefer-const":
+         "error" } },
+]);
