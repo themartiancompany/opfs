@@ -26,10 +26,11 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const
-  _opfs =
-    require(
-      "happy-opfs");
+_util =
+  require('util');
+_happy_opfs =
+  require(
+    "happy-opfs");
 const
   _opfs_tools =
     require(
@@ -37,22 +38,22 @@ const
 _file =
   _opfs_tools.file;
 
-function
-  _read_stream_create(
-    _input_file,
-    _options) {
-  const
-    _file_obj =
-      _file(
-        _input_file);
+_read_stream_create =
+  function
+    (_input_file,
+      _options) {
     const
-      _writer =
-        _file_obj.createReader();
-  return _writer;
-}
+      _file_obj =
+        _file(
+          _input_file);
+      const
+        _writer =
+          _file_obj.createReader();
+    return _writer;
+};
 
 function
-  _read_stream_create(
+  _write_stream_create(
     _input_file,
     _options) {
   const
@@ -65,10 +66,9 @@ function
   return _writer;
 }
 
-
 module.exports =
-  _opfs;
+  _happy_opfs;
 module.exports.createReadStream =
   _read_stream_create;
-module.exports.createWriteStream =
-  _write_stream_create;
+ module.exports.createWriteStream =
+   _write_stream_create;
