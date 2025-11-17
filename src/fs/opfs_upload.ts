@@ -107,9 +107,7 @@ export function
         })();
     return {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      abort(
-        reason?:
-          any):
+      abort(reason?: any):
         void {
         aborted =
           true;

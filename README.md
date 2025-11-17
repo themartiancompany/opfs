@@ -76,8 +76,8 @@ module by Jian Jie and renamed
 because I've noticed there was no
 `fs.createReadStream` implementation,
 while the other available
-[OPFS Tools`](
-  )
+[OPFS Tools](
+  https://github.com/hughfenghen/opfs-tools)
 module had but didn't call it verbatim
 so I've thought it may have
 been appropriate to make everybody including

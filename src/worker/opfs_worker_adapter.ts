@@ -167,14 +167,11 @@ export
  * @param args - I/O operation arguments.
  * @returns - I/O operation result.
  */
+// The linter here shows not to work well as it doesnt
+// support ignoring blocks.
+// https://eslint.org/docs/latest/use/configure/rules
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function
-  callWorkerOp<T>(
-    op:
-      WorkerAsyncOp,
-    ...args:
-      any[]):
-    IOResult<T> {
+function callWorkerOp<T>(op: WorkerAsyncOp, ...args: any[]): IOResult<T> {
     if ( !messenger ) {
       // too early
       return Err(

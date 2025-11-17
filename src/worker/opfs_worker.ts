@@ -187,11 +187,10 @@ async function
                 asyncOps[
                   op];
             try {
+              // The linter shows not to work well here
+              // as it cant disable a block of lines.
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              const
-                res:
-                  IOResult<any> =
-                  await ( handle as any )(
+              const res: IOResult<any> = await ( handle as any )(
                     ...args);
               if ( res.isErr() ) {
                 // without result success

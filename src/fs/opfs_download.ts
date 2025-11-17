@@ -140,9 +140,9 @@ export function
               });
     })();
     return {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       abort(
         reason?:
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           any):
         void {
         aborted =
