@@ -22,13 +22,13 @@
 
 
 ==================
-Happy OPFS
+OPFS Module
 ==================
 
 -----------------------------------------------------------
-Origin Private File System happy module
+Origin Private File System module
 -----------------------------------------------------------
-:Version: happy-opfs |version|
+:Version: opfs |version|
 :Manual section: 1
 
 Synopsis
@@ -48,7 +48,7 @@ Description
 ===========
 
 This is the manual for the system-wide version
-of the 'happy-opfs' Javascript / Typescript library module,
+of the 'opfs' Javascript / Typescript library module,
 a browser-compatible, OPFS-based
 Node / Deno 'fs' module implementation.
 
@@ -66,7 +66,7 @@ library is probably what you are looking for.
 Bugs
 ====
 
-https://github.com/themartiancompany/happy-opfs/-/issues
+https://github.com/themartiancompany/opfs/-/issues
 
 
 Copyright
