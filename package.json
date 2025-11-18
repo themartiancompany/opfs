@@ -40,10 +40,12 @@
   "type":
     "module",
   "files": [
+    "AUTHORS.rst",
     "COPYING",
     "README.md",
     "fs-worker",
     "fs-worker.js",
+    "fs-worker.webpack.config.cjs",
     "opfs",
     "package.json"
   ],
@@ -63,7 +65,7 @@
     "prebuild":
       "npm run lint",
     "build-fs-worker":
-      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.js' --stats-error-details",
+      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.mjs' --stats-error-details",
     "build":
       "npm install --save-dev && npm run build-fs-worker"
   },

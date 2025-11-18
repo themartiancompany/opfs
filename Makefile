@@ -45,6 +45,15 @@ DOC_FILES=\
       *.rst) \
   $(wildcard \
       *.md)
+NPM_FILES=\
+  "README.md" \
+  "COPYING" \
+  "AUTHORS.rst" \
+  "eslint.config.mjs" \
+  "fs-worker" \
+  "fs-worker.webpack.config.mjs" \
+  "$(_PROJECT)" \
+  "package.json"
 SCRIPT_FILES=\
   $(wildcard \
       $(_PROJECT)/*)
@@ -79,12 +88,7 @@ build-npm:
 	  -p \
 	  "build/man"; \
 	_files=( \
-	  "README.md" \
-	  "COPYING" \
-	  "AUTHORS.rst" \
-	  "eslint.config.mjs" \
-	  "$(_PROJECT)" \
-	  "package.json" \
+	  $(NPM_FILES) \
 	) ; \
 	mkdir \
 	  -p \
@@ -108,9 +112,6 @@ build-npm:
 	npm \
 	  run \
 	    "build"; \
-	rm \
-	  -rf \
-	  "node_modules"; \
 	npm \
 	  pack; \
 	mv \
