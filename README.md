@@ -30,7 +30,8 @@ Browser-compatible `fs` module obtained combining the
   https://github.com/themartiancompany/happy-opfs)
 and the
 [OPFS Tools](
-  https://github.com/hughfenghen/opfs-tools).
+  https://github.com/hughfenghen/opfs-tools)
+modules.
 
 OPFS stands for *origin private file system* 
 and it is a file system API for manipulating local
