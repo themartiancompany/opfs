@@ -51,7 +51,7 @@ NPM_FILES=\
   "AUTHORS.rst" \
   "eslint.config.mjs" \
   "fs-worker" \
-  "fs-worker.webpack.config.mjs" \
+  "fs-worker.webpack.config.cjs" \
   "$(_PROJECT)" \
   "package.json"
 SCRIPT_FILES=\

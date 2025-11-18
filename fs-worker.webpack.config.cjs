@@ -21,7 +21,7 @@ const
   };
 const
   _input_file =
-    `./node_modules/crash-js/crash-js/${_input_file_name}`;
+    `./${_input_file_name}`;
 module.exports = {
   entry:
     _input_file,

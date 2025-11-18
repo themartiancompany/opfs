@@ -65,7 +65,7 @@
     "prebuild":
       "npm run lint",
     "build-fs-worker":
-      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.mjs' --stats-error-details",
+      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.cjs' --stats-error-details",
     "build":
       "npm install --save-dev && npm run build-fs-worker"
   },
