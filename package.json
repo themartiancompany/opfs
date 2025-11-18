@@ -4,7 +4,7 @@
   "description":
     "Browser-compatible (OPFS) Node/Deno 'fs' module.",
   "version":
-    "2.0.3",
+    "2.0.4",
   "homepage":
     "https://github.com/themartiancompany/opfs",
   "license":
@@ -42,17 +42,19 @@
   "files": [
     "COPYING",
     "README.md",
+    "fs-worker",
+    "fs-worker.js",
     "opfs",
     "package.json"
   ],
   "source":
-    "src/mod.ts",
+    "./opfs",
   "man":
     "man/opfs.1",
   "main":
-    "opfs",
+    "./opfs",
   "module":
-    "opfs",
+    "./opfs",
   "sideEffects":
     false,
   "scripts": {
@@ -60,10 +62,10 @@
       "npx eslint .",
     "prebuild":
       "npm run lint",
+    "build-fs-worker":
+      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.js' --stats-error-details",
     "build":
-      "npm install --save-dev",
-    "docs":
-      "typedoc"
+      "npm install --save-dev && npm run build-fs-worker"
   },
   "repository": {
     "type": "git",
@@ -73,7 +75,13 @@
     "@eslint/js":
       "^9.32.0",
     "eslint":
-      "^9.32.0"
+      "^9.32.0",
+    "webpack":
+      "^5.102.1",
+    "webpack-cli":
+      "^6.0.1",
+    "web-worker":
+      "1.5.0"
   },
   "dependencies": {
     "happy-opfs":

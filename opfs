@@ -24,9 +24,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-_happy_opfs =
-  require(
-    "happy-opfs");
+const
+  _happy_opfs =
+    require(
+      "happy-opfs");
+const
+  _worker =
+    require(
+      "web-worker");
 const
   _opfs_tools =
     require(
@@ -62,8 +67,72 @@ function
   return _writer;
 }
 
+function
+  _fs_worker_new(
+    _url) {
+  let
+    _fs_worker;
+  if ( typeof _url === 'undefined' ) {
+    _url =
+      "fs-worker.js";
+  }
+  _fs_worker =
+    new _worker(
+      _url);
+  return _fs_worker;
+}
+
+async function
+  _fs_worker_start(
+    _worker_path,
+    _buffer_length,
+    _op_timeout) {
+  let
+    _agent,
+    _agent_connect,
+    _connect_opts,
+    _fs_worker;
+  if ( typeof _worker_path === 'undefined' ) {
+    _worker_path =
+      "fs-worker.js";
+  }
+  if ( typeof _buffer_length !== 'Number' ) {
+    // SharedArrayBuffer size between
+    // main thread and worker
+    _buffer_length =
+      10 * 1024 * 1024;
+  }
+  if ( typeof _buffer_length !== 'Number' ) {
+    // SharedArrayBuffer size between
+    // main thread and worker
+    _op_timeout =
+      10 * 1024 * 1024;
+  }
+  _agent_connect =
+    _fs.connectSyncAgent;
+  _fs_worker =
+    _fs_worker_new(
+      _worker_path);
+  _connect_opts = {
+    worker:
+      _fs_worker,
+    bufferLength:
+      _buffer_length,
+    opTimeout:
+      _op_timeout
+  }
+  _agent =
+    _agent_connect(
+      _connect_opts);
+  return _agent;
+}
+
 module.exports =
   _happy_opfs;
+module.exports.fsWorkerNew =
+  _fs_worker_new;
+module.exports.fsWorkerStart =
+  _fs_worker_start;
 module.exports.createReadStream =
   _read_stream_create;
  module.exports.createWriteStream =
