@@ -25,10 +25,6 @@
   https://img.shields.io/npm/v/@themartiancompany/opfs.svg)](
     https://npmjs.org/package/@themartiancompany/opfs)
 
-[![cn](
-  https://img.shields.io/badge/lang-cn-red.svg)](
-  README.cn.md)
-
 Browser-compatible `fs` module obtained combining the
 [Happy OPFS](
   https://github.com/themartiancompany/happy-opfs)
