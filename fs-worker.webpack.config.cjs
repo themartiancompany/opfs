@@ -34,10 +34,10 @@ module.exports = {
     fallback: {
       "fs":
         false,
-      "happy-opfs":
+      "opfs":
         _path.resolve(
           __dirname,
-          'node_modules/happy-opfs/dist/main.mjs'),
+          './opfs'),
       "path":
         false,
       "@std/path":
