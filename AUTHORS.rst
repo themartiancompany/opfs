@@ -2,9 +2,7 @@
    SPDX-License-Identifier: AGPL-3.0-or-later
 
    ----------------------------------------------------------------------
-   Copyright © 2024, 2025
-               Jiang Jie
-   Copyright © 2025
+   Copyright © 2025, 2026
                Pellegrino Prevete
 
    All rights reserved
@@ -25,9 +23,8 @@
 
 
 =====================================
-Happy OPFS Authors
+OPFS Authors
 =====================================
 
-* Jiang Jie <jiang115jie@gmail.com>
 * Pellegrino Prevete <pellegrinoprevete@gmail.com>
 * Truocolo <truocolo@aol.com>
