@@ -27,11 +27,16 @@
 
 import { defineConfig } from "eslint/config";
 
-export default defineConfig([
- { ignores: [
+const
+  _ignores = [
      "build/**",
+     "fs-worker.js",
      "eslint.config.js"
-   ],
+  ];
+
+export default defineConfig([
+ { ignores:
+     _ignores,
    rules:
      { semi:
          "error",
