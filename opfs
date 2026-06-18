@@ -127,6 +127,32 @@ async function
   return _agent;
 }
 
+function
+  _read_dir_sync(
+    _args) {
+  const
+    _read_dir =
+      _fs.readDirSync;
+  _return =
+    _read_dir.apply(
+      null,
+      [_args]).unwrap();
+  return _return;
+}
+
+function
+  _rename_sync(
+    _args) {
+  const
+    _rename =
+      _fs.moveSync;
+  _return =
+    _rename.apply(
+      null,
+      _args).unwrap();
+  return _return;
+}
+
 module.exports =
   _happy_opfs;
 module.exports.fsWorkerNew =
@@ -140,4 +166,6 @@ module.exports.createReadStream =
 module.exports.mkdtemp =
   _happy_opfs.mkTemp;
 module.exports.readdirSync =
-  _happy_opfs.readDirSync;
+  _read_dir_sync;
+module.exports.renameSync =
+  _rename_sync;
