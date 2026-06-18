@@ -4,7 +4,7 @@
   "description":
     "Browser-compatible (OPFS) Node/Deno 'fs' module.",
   "version":
-    "2.0.5",
+    "2.0.6",
   "homepage":
     "https://github.com/themartiancompany/opfs",
   "license":

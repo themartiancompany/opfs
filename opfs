@@ -139,3 +139,5 @@ module.exports.createReadStream =
    _write_stream_create;
 module.exports.mkdtemp =
   _happy_opfs.mkTemp;
+module.exports.readdirSync =
+  _happy_opfs.readDirSync;
