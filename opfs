@@ -137,3 +137,5 @@ module.exports.createReadStream =
   _read_stream_create;
  module.exports.createWriteStream =
    _write_stream_create;
+module.exports.mkdtemp =
+  _happy_opfs.mkTemp;
