@@ -153,6 +153,19 @@ function
   return _return;
 }
 
+function
+  _rm_sync(
+    _args) {
+  const
+    _rm =
+      _fs.removeSync;
+  _return =
+    _rm.apply(
+      null,
+      _args).unwrap();
+  return _return;
+}
+
 module.exports =
   _happy_opfs;
 module.exports.fsWorkerNew =
@@ -169,3 +182,5 @@ module.exports.readdirSync =
   _read_dir_sync;
 module.exports.renameSync =
   _rename_sync;
+module.exports.rmSync =
+  _rm_sync;
