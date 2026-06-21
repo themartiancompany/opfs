@@ -74,6 +74,8 @@ module.exports = {
   },
   resolve: {
     fallback: {
+      "node:fs":
+        false,
       "fs":
         _path.resolve(
           __dirname,
@@ -89,11 +91,7 @@ module.exports = {
           __dirname,
           'node_modules/@std/path/mod.js'),
     }
-    fallback: {
-      "node:fs":
-        false,
-    }
-  }
+  },
   plugins: [
     _node_fs_ignore_plugin,
   ]
