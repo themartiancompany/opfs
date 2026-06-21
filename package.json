@@ -4,7 +4,7 @@
   "description":
     "Browser-compatible (OPFS) Node/Deno 'fs' module.",
   "version":
-    "2.0.10",
+    "2.0.11",
   "homepage":
     "https://github.com/themartiancompany/opfs",
   "license":
@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@eslint/js":
-      "^9.32.0",
+      "^10.0.1",
     "eslint":
       "^10.3.0",
     "webpack":
