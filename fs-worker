@@ -26,7 +26,8 @@
 
 const
   _fs =
-    require("opfs");
+    require(
+      "opfs");
 _sync_agent =
   _fs.startSyncAgent;
 
