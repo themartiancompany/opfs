@@ -109,7 +109,7 @@ async function
       10 * 1024 * 1024;
   }
   _agent_connect =
-    _fs.connectSyncAgent;
+    _happy_opfs.connectSyncAgent;
   _fs_worker =
     _fs_worker_new(
       _worker_path);
@@ -132,7 +132,7 @@ function
     _args) {
   const
     _read_dir =
-      _fs.readDirSync;
+      _happy_opfs.readDirSync;
   _return =
     _read_dir.apply(
       null,
@@ -145,7 +145,7 @@ function
     _args) {
   const
     _rename =
-      _fs.moveSync;
+      _happy_opfs.moveSync;
   _return =
     _rename.apply(
       null,
@@ -158,7 +158,7 @@ function
     _args) {
   const
     _rm =
-      _fs.removeSync;
+      _happy_opfs.removeSync;
   _return =
     _rm.apply(
       null,
@@ -182,8 +182,61 @@ function
   true;
 }
 
+async function
+  _chmod(
+    _file,
+    _mode) {
+  true;
+}
+
+async function
+  _chown(
+    _file,
+    _mode) {
+  true;
+}
+
+function
+  _copy_sync_get(
+    _fs_module) {
+  const
+    _fs_module_type =
+      typeof(
+        _fs_module);
+  if ( _fs_module_type == "undefined" ||
+       _fs_module == "" ||
+       _fs_module == {} ) {
+    _fs_module =
+      require(
+        "happy-opfs");
+  }
+  const
+    _copy_sync =
+      function(
+    _args) {
+      const
+        _copy =
+          _happy_opfs.copySync;
+      _return =
+        _copy.apply(
+          null,
+          [ _args ]).unwrap();
+      return _return;
+    };
+  return _copy_sync;
+}
+
+const
+  _copy_sync =
+    _copy_sync_get(
+      _happy_opfs);
+
 module.exports =
   _happy_opfs;
+module.exports.copyFile =
+  _happy_opfs.copy;
+module.exports.copyFileSync =
+  _copy_sync;
 module.exports.fsWorkerNew =
   _fs_worker_new;
 module.exports.fsWorkerStart =
@@ -192,8 +245,12 @@ module.exports.createReadStream =
   _read_stream_create;
  module.exports.createWriteStream =
    _write_stream_create;
+module.exports.chmod =
+  _chmod;
 module.exports.chmodSync =
   _chmod_sync;
+module.exports.chown =
+  _chown;
 module.exports.chownSync =
   _chown_sync;
 module.exports.mkdtemp =
