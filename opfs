@@ -237,6 +237,10 @@ module.exports.copyFile =
   _happy_opfs.copy;
 module.exports.copyFileSync =
   _copy_sync;
+module.exports.cp =
+  _happy_opfs.copy;
+module.exports.cpSync =
+  _copy_sync;
 module.exports.fsWorkerNew =
   _fs_worker_new;
 module.exports.fsWorkerStart =
