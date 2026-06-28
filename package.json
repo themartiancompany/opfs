@@ -4,7 +4,7 @@
   "description":
     "Browser-compatible (OPFS) Node/Deno 'fs' module.",
   "version":
-    "2.0.11",
+    "2.0.12",
   "homepage":
     "https://github.com/themartiancompany/opfs",
   "license":
@@ -89,6 +89,8 @@
     "happy-opfs":
       "npm:@themartiancompany/happy-opfs@^1.8.12",
     "opfs-tools":
-      "0.7.4"
+      "0.7.4",
+    "passwd.js":
+      "0.0.1"
   }
 }

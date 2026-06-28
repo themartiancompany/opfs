@@ -166,6 +166,22 @@ function
   return _return;
 }
 
+function
+  _chown_sync(
+    _file,
+    _user) {
+  // TODO
+  true;
+}
+
+function
+  _chmod_sync(
+    _file,
+    _mode) {
+  // TODO
+  true;
+}
+
 module.exports =
   _happy_opfs;
 module.exports.fsWorkerNew =
@@ -176,6 +192,10 @@ module.exports.createReadStream =
   _read_stream_create;
  module.exports.createWriteStream =
    _write_stream_create;
+module.exports.chmodSync =
+  _chmod_sync;
+module.exports.chownSync =
+  _chown_sync;
 module.exports.mkdtemp =
   _happy_opfs.mkTemp;
 module.exports.mkdtempSync =
